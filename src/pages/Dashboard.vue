@@ -9,36 +9,6 @@
         <Button @click="getProfile()" class="bg-white rounded-md p-2 mb-4">Profile</Button>
         <Button @click="GetAdmins()" class="bg-white rounded-md p-2 mb-4">Admins</Button>
         <Button @click="GetUsers()" class="bg-white rounded-md p-2 mb-4">Users</Button>
-<<<<<<< HEAD
-        <Button @click="GetBlockUsers()" class="bg-white rounded-md p-2 mb-4">Block Users</Button>
-        <Button @click="AddBook()" class="bg-white rounded-md p-2 mb-4">Add Book</Button>
-      </aside>
-    </div>
-    <div class="w-full justify-center items-center flex ">
-      <div>
-
-        <h1 class="text-4xl">My Profile</h1>
-        <p class="text-black mt-6">First Name</p>
-        <input class="p-2 mb-2 mt-2 border rounded-md w-[880px]" type="text" name="" id="" placeholder="First Name" >
-        <p class="text-grey mb-8">Please Enter your first name</p>
-  
-        <p class="text-black">Last Name</p>
-        <input class="p-2 mb-2 mt-2 border rounded-md w-[880px]" type="text" name="" id="" placeholder="Last Name" >
-        <p class="text-grey mb-8">Please Enter your last name</p>
-      7
-        <div class="flex ">
-          <div>
-
-            <p class="text-black ">Phone</p>
-            <input class="p-2 mb-2 mt-2 border rounded-md w-[400px]" type="text" name="" id="" placeholder="Phone Number" >
-            <p class="text-grey mb-8">Please Enter your Phone number </p>
-    
-          </div>
-          <div class="ml-20">
-            <p class="text-black ">Email</p>
-            <input class="p-2 mb-2 mt-2 border rounded-md w-[400px]" type="text" name="" id="" placeholder="Email" >
-            <p class="text-grey">Please Enter your Email</p>
-=======
         <Button @click="GetBlockUsersss()" class="bg-white rounded-md p-2 mb-4">Block Users</Button>
         <Button class="bg-white rounded-md p-2 mb-4">Add Book</Button>
         <Button @click="logout()" class="bg-white text-black rounded-md p-2 mb-4 btn-warning">Logout</Button>
@@ -58,7 +28,6 @@
           </div>
           <div class="justify-end">
             <router-link to="/" class="bg-red-500 mt-5 p-3 rounded-xl " type="submit" @click="DeletedToken()">Logout</router-link>
->>>>>>> bebe7eee (third commit)
           </div>
         </div>
         <p class="mt-5 ">First Name</p>
@@ -83,9 +52,6 @@
         </div>
         <button class="bg-blue-500 mt-10 p-3 rounded-xl" type="submit">Save Changes</button>
       </div>
-<<<<<<< HEAD
-    </div>
-=======
     </div>z
       <-- <div class="col ml-10">
         <div class="flex">
@@ -118,7 +84,6 @@
         <button class="bg-blue-500 mt-10 p-3 rounded-xl" type="submit">Save Changes</button>
       </div> -->
     <!-- </div> -->
->>>>>>> bebe7eee (third commit)
   </main>
 
   </template>
@@ -128,45 +93,26 @@ import { useStore } from "vuex";
 import { useHome } from "../composables/home";
 import Loading from "../components/Loading.vue";
 import Button from "../components/base/base-button.vue";
-<<<<<<< HEAD
-import profile from "../pages/admin/AdminProfile.vue"
-=======
 // import profile from "../pages/admin/AdminProfile.vue"
 import Navbar from "../components/Navbar.vue";
->>>>>>> bebe7eee (third commit)
 
 const store = useStore();
 const { products, loading } = useHome();
 
 async function getProfile(){
   const res = localStorage.getItem("user");
-<<<<<<< HEAD
-  console.log(res);
-=======
   const profile = await store.dispatch("viewProfile")
->>>>>>> bebe7eee (third commit)
 }
 async function GetAdmins(){
   const admins=await store.dispatch('viewAdmins')
 }
 async function GetUsers(){
-<<<<<<< HEAD
-  console.log('Users bosildi');
-}
-
-=======
   const users=await store.dispatch('viewUsers')
 }
 async function GetBlockUsersss(){
   const blocks=await store.dispatch('viewBlockUsers')
 }
->>>>>>> bebe7eee (third commit)
 function logout() {
   store.commit("LOGOUT");
 }
 </script>
-<<<<<<< HEAD
-
-<style lang="scss" scoped></style>
-=======
->>>>>>> bebe7eee (third commit)
