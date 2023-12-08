@@ -39,6 +39,7 @@ const router = createRouter({
       },
       children:[
         {
+<<<<<<< HEAD
           path: "/adminview",
           name: "adminview",
           component: ()=>import("../pages/AdminView.vue"),
@@ -57,6 +58,28 @@ const router = createRouter({
         requiresAuth: true,
         title: MT_PROFILE,
       },
+=======
+          path:"profile",
+          name:"profile",
+          component:()=>import("../pages/Profile.vue")
+        },
+        {
+          path:"admins",
+          name:"admin",
+          component:()=>import("../pages/Adminview.vue")
+        },
+        {
+          path:"users",
+          name:"users",
+          component:()=>import("../pages/Usersview.vue")
+        },
+        {
+          path:"blockusers",
+          name:"blockusers",
+          component:()=>import("../pages/BlockUsers.vue")
+        },
+      ]
+>>>>>>> bebe7eee (third commit)
     },
     {
       path: "/:pathmatch(.*)*",
