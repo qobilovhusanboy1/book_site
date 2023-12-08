@@ -1,40 +1,74 @@
 <template>
-    <div v-if="loading" class="relative">
-      <Loading />
+  <div v-if="loading" class="relative">
+    <Loading />
+  </div>
+  <main class="flex">
+    <div class="w-1/5 sticky h-screen top-0 left-0">
+      <aside class="h-screen bg-gray-900 px-4 py-6 flex flex-col">
+        <h2 class="text-center uppercase text-xl font-semibold mb-4 text-white">Admin Panel</h2>
+        <Button @click="getProfile()" class="bg-white rounded-md p-2 mb-4">Profile</Button>
+        <Button @click="GetAdmins()" class="bg-white rounded-md p-2 mb-4">Admins</Button>
+        <Button @click="GetUsers()" class="bg-white rounded-md p-2 mb-4">Users</Button>
+        <Button @click="GetBlockUsers()" class="bg-white rounded-md p-2 mb-4">Block Users</Button>
+        <Button @click="AddBook()" class="bg-white rounded-md p-2 mb-4">Add Book</Button>
+      </aside>
     </div>
-    <div v-else class="bg-[#1F1E1D] min-h-[100vh]">
-      <div class="flex justify-end p-5">
-        <Button class="btn-warning" @click="logout">Logout</Button>
-      </div>
+    <div class="w-full justify-center items-center flex ">
+      <div>
+
+        <h1 class="text-4xl">My Profile</h1>
+        <p class="text-black mt-6">First Name</p>
+        <input class="p-2 mb-2 mt-2 border rounded-md w-[880px]" type="text" name="" id="" placeholder="First Name" >
+        <p class="text-grey mb-8">Please Enter your first name</p>
   
-      <div class="container m-auto flex gap-20 justify-start pb-10">
-        <p class="text-3xl text-[#C9AC8C]" @click="getadmins">Admins</p>
-        <p class="text-3xl text-[#C9AC8C]">Users</p>
-        <p class="text-3xl text-[#C9AC8C]">Books</p>
-      </div>
-  
-      <div class=" container m-auto flex flex-wrap gap-8">
-        <div class="w-[190px]" v-for="product of products">
-          <img class="w-[100%] h-[250px] rounded-xl object-cover" :src="product.img_url" alt="">
-          <h2 class="mt-2 text-[#C9AC8C] font-medium text-2xl font-['Playfair Display']">{{ product.name }}</h2>
-          <p class="text-white">{{product.author}}</p>
-          <strong class="text-white">${{product.price}}</strong>
+        <p class="text-black">Last Name</p>
+        <input class="p-2 mb-2 mt-2 border rounded-md w-[880px]" type="text" name="" id="" placeholder="Last Name" >
+        <p class="text-grey mb-8">Please Enter your last name</p>
+      7
+        <div class="flex ">
+          <div>
+
+            <p class="text-black ">Phone</p>
+            <input class="p-2 mb-2 mt-2 border rounded-md w-[400px]" type="text" name="" id="" placeholder="Phone Number" >
+            <p class="text-grey mb-8">Please Enter your Phone number </p>
+    
+          </div>
+          <div class="ml-20">
+            <p class="text-black ">Email</p>
+            <input class="p-2 mb-2 mt-2 border rounded-md w-[400px]" type="text" name="" id="" placeholder="Email" >
+            <p class="text-grey">Please Enter your Email</p>
+          </div>
         </div>
       </div>
     </div>
+  </main>
+
   </template>
   
 <script setup>
 import { useStore } from "vuex";
-
 import { useHome } from "../composables/home";
 import Loading from "../components/Loading.vue";
 import Button from "../components/base/base-button.vue";
+import profile from "../pages/admin/AdminProfile.vue"
 
 const store = useStore();
 const { products, loading } = useHome();
+
+async function getProfile(){
+  const res = localStorage.getItem("user");
+  console.log(res);
+}
+async function GetAdmins(){
+  const admins=await store.dispatch('viewAdmins')
+}
+async function GetUsers(){
+  console.log('Users bosildi');
+}
 
 function logout() {
   store.commit("LOGOUT");
 }
 </script>
+
+<style lang="scss" scoped></style>

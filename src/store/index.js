@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 import router from "../router";
 import { errorToast, successToast } from "../utils/toast";
-import { RT_HOME, RT_LOGIN, RT_DASHBOARD } from "../constants/routeNames";
+import { RT_HOME, RT_LOGIN, RT_DASHBOARD,RT_ADMINVIEW } from "../constants/routeNames";
 
 const url = import.meta.env.VITE_BASE_URL;
 
@@ -18,7 +18,7 @@ const store = createStore({
   },
 
   actions: {
-    async login({ commit }, payload) {
+    async  login({ commit }, payload) {
       try {
         const res = await axios.post(url + "api/login", payload);
         if (!res.data?.token && res.status !== 200) {
@@ -67,6 +67,24 @@ const store = createStore({
         errorToast("Not found Book");
       }
     },
+
+    // async Profile(){
+    //   try {
+    //     const user = localStorage.getItem("user");
+    //     return user
+    //   } catch (error) {
+    //     errorToast("Error")
+    //   }
+    // }
+
+    async  viewAdmins(){
+      try {
+        const res = await axios.get("http://localhost:4000/api/find-admins")
+        router.push({ name: "" });
+      } catch (error) {
+        errorToast("Not found Admins");
+      }
+    }
   },
 
   mutations: {
@@ -78,10 +96,12 @@ const store = createStore({
 
     SET_USER: (state, payload) => {
       state.user = payload;
+      localStorage.setItem("user", JSON.stringify(payload));
       router.push({ name: RT_HOME });
     },
 
     SET_PRODUTS: (state, payload) => (state.products = payload),
+
 
     LOGOUT: (state) => {
       state.user = {};

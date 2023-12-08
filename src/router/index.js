@@ -5,7 +5,7 @@ import store from "../store";
 import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
 import Dashboard from "../pages/Dashboard.vue"
-import { RT_HOME, MT_HOME, RT_LOGIN, MT_LOGIN, RT_404, MT_404, RT_DASHBOARD, MT_DASHBOARD } from "../constants/routeNames";
+import { RT_HOME, MT_HOME, RT_LOGIN, MT_LOGIN, RT_404, MT_404, RT_DASHBOARD, MT_DASHBOARD,RT_PROFILE ,MT_PROFILE, RT_ADMINVIEW , MT_ADMINVIEW } from "../constants/routeNames";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -37,6 +37,26 @@ const router = createRouter({
         requiresAuth: true,
         title: MT_DASHBOARD,
       },
+      children:[
+        {
+          path: "/adminview",
+          name: "adminview",
+          component: ()=>import("../pages/AdminView.vue"),
+          meta: {
+            requiresAuth: true,
+            title: "adminview",
+          }
+        }
+      ]
+    },
+    {
+      path: "/profile",
+      name: RT_PROFILE,
+      component: ()=>import("../pages/admin/AdminProfile.vue"),
+      meta: {
+        requiresAuth: true,
+        title: MT_PROFILE,
+      },
     },
     {
       path: "/:pathmatch(.*)*",
@@ -46,7 +66,7 @@ const router = createRouter({
         title: MT_404,
         layout: "NotFound",
       },
-    },
+    }
   ],
 });
 
