@@ -27,6 +27,7 @@ const store = createStore({
         }
         commit("SET_TOKEN", res.data.token);
         commit("SET_USER", res.data);
+        localStorage.setItem("user", JSON.stringify(res.data))
         if(res.data.person.is_admin){
           successToast("Admin logged in!");
           router.push({ name: RT_DASHBOARD });
@@ -67,6 +68,7 @@ const store = createStore({
         errorToast("Not found Book");
       }
     },
+<<<<<<< HEAD
 
     // async Profile(){
     //   try {
@@ -76,11 +78,41 @@ const store = createStore({
     //     errorToast("Error")
     //   }
     // }
+=======
+    async viewProfile(){
+      try {
+        localStorage.getItem('user')
+        router.push({name:"profile"})
+      } catch (error) {
+        errorToast("Not found Profile");
+      }
+    },
+>>>>>>> bebe7eee (third commit)
 
     async  viewAdmins(){
       try {
         const res = await axios.get("http://localhost:4000/api/find-admins")
+<<<<<<< HEAD
         router.push({ name: "" });
+=======
+        router.push({ name: "admin" });
+      } catch (error) {
+        errorToast("Not found Admins");
+      }
+    },
+    async  viewUsers(){
+      try {
+        const res = await axios.get("http://localhost:4000/api/find-users")
+        router.push({ name: "users" });
+      } catch (error) {
+        errorToast("Not found Admins");
+      }
+    },
+    async  viewBlockUsers(){
+      try {
+        const res = await axios.get("http://localhost:4000/api/find-block.users")
+        router.push({ name: "blockusers" });
+>>>>>>> bebe7eee (third commit)
       } catch (error) {
         errorToast("Not found Admins");
       }
